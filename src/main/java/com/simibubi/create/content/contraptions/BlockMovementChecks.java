@@ -170,16 +170,16 @@ public class BlockMovementChecks {
 	// Fallback checks
 
 	private static boolean isMovementNecessaryFallback(BlockState state, Level world, BlockPos pos) {
-		if (isBrittle(state))
-			return true;
-		if (AllBlockTags.MOVABLE_EMPTY_COLLIDER.matches(state))
-			return true;
-		if (state.getCollisionShape(world, pos)
-			.isEmpty())
-			return false;
-		if (state.getMaterial()
-			.isReplaceable())
-			return false;
+//		if (isBrittle(state))
+//			return true;
+//		if (AllBlockTags.MOVABLE_EMPTY_COLLIDER.matches(state))
+//			return true;
+//		if (state.getCollisionShape(world, pos)
+//			.isEmpty())
+//			return false;
+//		if (state.getMaterial()
+//			.isReplaceable())
+//			return false;
 		return true;
 	}
 
@@ -227,35 +227,37 @@ public class BlockMovementChecks {
 	}
 
 	private static boolean isBrittleFallback(BlockState state) {
-		Block block = state.getBlock();
-		if (state.hasProperty(BlockStateProperties.HANGING))
-			return true;
+		return false;
 
-		if (block instanceof LadderBlock)
-			return true;
-		if (block instanceof TorchBlock)
-			return true;
-		if (block instanceof SignBlock)
-			return true;
-		if (block instanceof BasePressurePlateBlock)
-			return true;
-		if (block instanceof FaceAttachedHorizontalDirectionalBlock && !(block instanceof GrindstoneBlock))
-			return true;
-		if (block instanceof CartAssemblerBlock)
-			return false;
-		if (block instanceof BaseRailBlock)
-			return true;
-		if (block instanceof DiodeBlock)
-			return true;
-		if (block instanceof RedStoneWireBlock)
-			return true;
-		if (block instanceof WoolCarpetBlock)
-			return true;
-		if (block instanceof WhistleBlock)
-			return true;
-		if (block instanceof WhistleExtenderBlock)
-			return true;
-		return AllBlockTags.BRITTLE.matches(state);
+//		Block block = state.getBlock();
+//		if (state.hasProperty(BlockStateProperties.HANGING))
+//			return true;
+//
+//		if (block instanceof LadderBlock)
+//			return true;
+//		if (block instanceof TorchBlock)
+//			return true;
+//		if (block instanceof SignBlock)
+//			return true;
+//		if (block instanceof BasePressurePlateBlock)
+//			return true;
+//		if (block instanceof FaceAttachedHorizontalDirectionalBlock && !(block instanceof GrindstoneBlock))
+//			return true;
+//		if (block instanceof CartAssemblerBlock)
+//			return false;
+//		if (block instanceof BaseRailBlock)
+//			return true;
+//		if (block instanceof DiodeBlock)
+//			return true;
+//		if (block instanceof RedStoneWireBlock)
+//			return true;
+//		if (block instanceof WoolCarpetBlock)
+//			return true;
+//		if (block instanceof WhistleBlock)
+//			return true;
+//		if (block instanceof WhistleExtenderBlock)
+//			return true;
+//		return AllBlockTags.BRITTLE.matches(state);
 	}
 
 	private static boolean isBlockAttachedTowardsFallback(BlockState state, Level world, BlockPos pos,
@@ -349,37 +351,38 @@ public class BlockMovementChecks {
 	}
 
 	private static boolean isNotSupportiveFallback(BlockState state, Direction facing) {
-		if (AllBlocks.MECHANICAL_DRILL.has(state))
-			return state.getValue(BlockStateProperties.FACING) == facing;
-		if (AllBlocks.MECHANICAL_BEARING.has(state))
-			return state.getValue(BlockStateProperties.FACING) == facing;
-
-		if (AllBlocks.CART_ASSEMBLER.has(state))
-			return Direction.DOWN == facing;
-		if (AllBlocks.MECHANICAL_SAW.has(state))
-			return state.getValue(BlockStateProperties.FACING) == facing;
-		if (AllBlocks.PORTABLE_STORAGE_INTERFACE.has(state))
-			return state.getValue(PortableStorageInterfaceBlock.FACING) == facing;
-		if (state.getBlock() instanceof AttachedActorBlock && !AllBlocks.MECHANICAL_ROLLER.has(state))
-			return state.getValue(BlockStateProperties.HORIZONTAL_FACING) == facing;
-		if (AllBlocks.ROPE_PULLEY.has(state))
-			return facing == Direction.DOWN;
-		if (state.getBlock() instanceof WoolCarpetBlock)
-			return facing == Direction.UP;
-		if (state.getBlock() instanceof SailBlock)
-			return facing.getAxis() == state.getValue(SailBlock.FACING)
-				.getAxis();
-		if (AllBlocks.PISTON_EXTENSION_POLE.has(state))
-			return facing.getAxis() != state.getValue(BlockStateProperties.FACING)
-				.getAxis();
-		if (AllBlocks.MECHANICAL_PISTON_HEAD.has(state))
-			return facing.getAxis() != state.getValue(BlockStateProperties.FACING)
-				.getAxis();
-		if (AllBlocks.STICKER.has(state) && !state.getValue(StickerBlock.EXTENDED))
-			return facing == state.getValue(StickerBlock.FACING);
-		if (state.getBlock() instanceof SlidingDoorBlock)
-			return false;
-		return isBrittle(state);
+		return false;
+//		if (AllBlocks.MECHANICAL_DRILL.has(state))
+//			return state.getValue(BlockStateProperties.FACING) == facing;
+//		if (AllBlocks.MECHANICAL_BEARING.has(state))
+//			return state.getValue(BlockStateProperties.FACING) == facing;
+//
+//		if (AllBlocks.CART_ASSEMBLER.has(state))
+//			return Direction.DOWN == facing;
+//		if (AllBlocks.MECHANICAL_SAW.has(state))
+//			return state.getValue(BlockStateProperties.FACING) == facing;
+//		if (AllBlocks.PORTABLE_STORAGE_INTERFACE.has(state))
+//			return state.getValue(PortableStorageInterfaceBlock.FACING) == facing;
+//		if (state.getBlock() instanceof AttachedActorBlock && !AllBlocks.MECHANICAL_ROLLER.has(state))
+//			return state.getValue(BlockStateProperties.HORIZONTAL_FACING) == facing;
+//		if (AllBlocks.ROPE_PULLEY.has(state))
+//			return facing == Direction.DOWN;
+//		if (state.getBlock() instanceof WoolCarpetBlock)
+//			return facing == Direction.UP;
+//		if (state.getBlock() instanceof SailBlock)
+//			return facing.getAxis() == state.getValue(SailBlock.FACING)
+//				.getAxis();
+//		if (AllBlocks.PISTON_EXTENSION_POLE.has(state))
+//			return facing.getAxis() != state.getValue(BlockStateProperties.FACING)
+//				.getAxis();
+//		if (AllBlocks.MECHANICAL_PISTON_HEAD.has(state))
+//			return facing.getAxis() != state.getValue(BlockStateProperties.FACING)
+//				.getAxis();
+//		if (AllBlocks.STICKER.has(state) && !state.getValue(StickerBlock.EXTENDED))
+//			return facing == state.getValue(StickerBlock.FACING);
+//		if (state.getBlock() instanceof SlidingDoorBlock)
+//			return false;
+//		return isBrittle(state);
 	}
 
 	// Check classes
